@@ -5,6 +5,9 @@ const app = Vue.createApp({
             jobsData: [],
             categories: [],
             selectedCategories: [],
+            selectedSortOption: "salary_to",
+            currentPage: 1,
+            itemsPerPage: 10,
         };
     },
     created() {
@@ -51,6 +54,26 @@ const app = Vue.createApp({
                     b.posted_date.localeCompare(a.posted_date)
                 );
             }
+        },
+        paginatedJobs() {
+            // show max 10 jobs per page
+            const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+            const endIndex = startIndex + this.itemsPerPage;
+            return this.sortedJobs.slice(startIndex, endIndex);
+        },
+
+        // calculates total pages based on the length of sortedJobs and number of items per page
+        totalPages() {
+            return Math.ceil(this.sortedJobs.length / this.itemsPerPage);
+        },
+
+        // array of pages to be displayed at the bottom of the page
+        pageRange() {
+            const range = [];
+            for (let i = 1; i <= this.totalPages; i++) {
+                range.push(i);
+            }
+            return range;
         },
     },
 
