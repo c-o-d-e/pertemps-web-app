@@ -8,6 +8,7 @@ const app = Vue.createApp({
             selectedSortOption: "salary_to",
             currentPage: 1,
             itemsPerPage: 10,
+            searchQuery: "",
         };
     },
     created() {
@@ -38,6 +39,14 @@ const app = Vue.createApp({
         // filter and sort jobs
         sortedJobs() {
             let jobs = this.jobsData.slice();
+
+            // filter by search query
+            if (this.searchQuery !== "") {
+                const query = this.searchQuery.toLowerCase();
+                jobs = jobs.filter(job =>
+                    job.job_title.toLowerCase().includes(query)
+                );
+            }
 
             // filter by categories
             if (this.categories.length > 0) {
@@ -83,6 +92,12 @@ const app = Vue.createApp({
         },
         increaseImgHeight() {
             this.imgHeight += 10;
+        },
+        setPage(pageNumber) {
+            this.currentPage = pageNumber;
+        },
+        updatePage() {
+            this.currentPage = 1;
         },
     },
 });
