@@ -27,15 +27,19 @@
             <!-- Main container -->
             <div class="container main">
                 <!-- Search bar -->
-                <div>
-                    <label for="search">Search</label>
-                    <div>
+                <div class="shadow bg-white p-3 rounded-3 search-div">
+                    <label class="d-flex ps-1 pb-1" for="search">Search</label>
+                    <div class="input-button d-flex justify-content-start">
                         <input
+                            class="me-2 rounded-4 ps-3 col-9 col-lg-10 col-sm-9"
                             id="search"
                             type="text"
                             placeholder="job title"
                         />
-                        <button id="search-button">
+                        <button
+                            class="btn btn-primary btn-search text-white btn-sm rounded-4 pe-4 ps-4 col-lg-2"
+                            id="search-button"
+                        >
                             <i class="fa fa-search"></i> Search
                         </button>
                     </div>
