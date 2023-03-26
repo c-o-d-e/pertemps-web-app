@@ -98,14 +98,22 @@
                             <!-- Current Page -->
                             <div class="current-page">
                                 <div class="pagination">
-                                    <span> 1 >Page of </span>
+                                    <span>
+                                        Page {{currentPage}} of
+                                        {{totalPages}}</span
+                                    >
                                 </div>
                             </div>
                             <div class="sorting">
                                 Sort by:
-                                <select v-model="selectedSortOption">
-                                    <option>Highest Salary</option>
-                                    <option>Date</option>
+                                <select
+                                    class="shadow bg-white p-1 rounded-3 border-0"
+                                    v-model="selectedSortOption"
+                                >
+                                    <option value="salary_to">
+                                        Highest Salary
+                                    </option>
+                                    <option value="posted_date">Date</option>
                                 </select>
                             </div>
                         </div>
@@ -121,6 +129,17 @@
                             </ul>
                         </div>
                         <!-- Job listings -->
+
+                        <!-- Pagination -->
+                        <div class="d-flex justify-content-center">
+                            <button
+                                class="page-buttons btn-search btn btn-primary"
+                                v-for="pageNumber in totalPages"
+                                :key="pageNumber"
+                            >
+                                {{ pageNumber }}
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <!-- Main section -->
