@@ -2,7 +2,20 @@
     position: absolute;
 }
 
+/* Match positioning of the container */
 .main {
     position: relative;
     top: 200px;
+}
+
+/* Custom colours for the search button */
+.btn-search {
+    background-color: #7baedd;
+    border-color: #7baedd;
+    color: #fff;
+}
+
+/* Colour change to the border of search input */
+#search {
+    border-color: rgba(0, 0, 0, 0.2);
 }
