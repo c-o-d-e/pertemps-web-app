@@ -4,6 +4,7 @@ const app = Vue.createApp({
             imgHeight: 30,
             jobsData: [],
             categories: [],
+            selectedCategories: [],
         };
     },
     created() {
@@ -19,6 +20,9 @@ const app = Vue.createApp({
                     categoriesSet.add(job.category);
                 });
                 this.categories = Array.from(categoriesSet);
+
+                // select all categories
+                this.selectedCategories = this.categories.slice();
             });
     },
 
@@ -26,6 +30,27 @@ const app = Vue.createApp({
         // reduce the height of the image on job details page
         jobDetailsImgHeight() {
             return `${this.imgHeight}vh`;
+        },
+
+        // filter and sort jobs
+        sortedJobs() {
+            let jobs = this.jobsData.slice();
+
+            // filter by categories
+            if (this.categories.length > 0) {
+                jobs = jobs.filter(job =>
+                    this.selectedCategories.includes(job.category)
+                );
+            }
+
+            // sort by highest salary_to and latest date posted
+            if (this.selectedSortOption === "salary_to") {
+                return jobs.sort((a, b) => b.salary_to - a.salary_to);
+            } else if (this.selectedSortOption === "posted_date") {
+                return jobs.sort((a, b) =>
+                    b.posted_date.localeCompare(a.posted_date)
+                );
+            }
         },
     },
 
