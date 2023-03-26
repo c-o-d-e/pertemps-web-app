@@ -17,7 +17,12 @@
     </head>
     <body>
         <div id="app">
-            <div>{{text}}</div>
+            <!-- Background image -->
+            <div
+                class="bg-image hero-img"
+                :style="{ backgroundImage: 'url(images/2.jpg)', height: 'auto', width: '100%', borderBottomRightRadius: '50% 10%', borderBottomLeftRadius: '50% 10%', minHeight: jobDetailsImgHeight }"
+            ></div>
+            <!-- Background image -->
         </div>
         <script src="vendors/vue.global.js"></script>
         <script src="vendors/bootstrap-5.3.0-alpha2-dist/js/bootstrap.js"></script>
