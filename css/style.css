@@ -19,3 +19,8 @@
 #search {
     border-color: rgba(0, 0, 0, 0.2);
 }
+
+/* Primary highlight colour */
+.primary-hl-color {
+    color: #7baedd;
+}
