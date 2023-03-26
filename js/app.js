@@ -99,6 +99,12 @@ const app = Vue.createApp({
         updatePage() {
             this.currentPage = 1;
         },
+        reset() {
+            this.selectedCategories = this.categories.slice();
+            this.searchQuery = "";
+            this.selectedSortOption = "salary_to";
+            this.currentPage = 1;
+        },
     },
 });
 
