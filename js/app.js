@@ -84,6 +84,23 @@ const app = Vue.createApp({
             }
             return range;
         },
+
+        // job count per category
+        jobsPerCategory() {
+            const jobCount = {};
+
+            // loop through each job and increment the count for its category
+            this.jobsData.forEach(job => {
+                if (jobCount[job.category]) {
+                    jobCount[job.category]++;
+                } else {
+                    jobCount[job.category] = 1;
+                }
+            });
+
+            // return the job count object
+            return jobCount;
+        },
     },
 
     methods: {
