@@ -26,6 +26,17 @@
 }
 
 /* Smaller font size */
-#reset-button {
+#reset-button,
+.pagination,
+.sorting {
     font-size: 0.8rem;
+}
+
+/* custom width for pagination */
+.page-buttons {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border: none;
 }
