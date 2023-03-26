@@ -24,3 +24,8 @@
 .primary-hl-color {
     color: #7baedd;
 }
+
+/* Smaller font size */
+#reset-button {
+    font-size: 0.8rem;
+}
