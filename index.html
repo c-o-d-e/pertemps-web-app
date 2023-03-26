@@ -57,7 +57,7 @@
                         <div class="number-jobs">
                             <h5>
                                 <span class="primary-hl-color"
-                                    >{{jobsData.length}}</span
+                                    >{{sortedJobs.length}}</span
                                 >
                                 Jobs found
                             </h5>
@@ -121,10 +121,11 @@
                         </div>
                         <!-- Job listings -->
                         <div class="jobs-content">
-                            <ul>
+                            <ul class="list-unstyled">
                                 <li
                                     class="shadow bg-white p-3 rounded-3 mb-3"
-                                    v-for="job in jobsData"
+                                    v-for="job in paginatedJobs"
+                                    :class="{'d-none': selectedJobIndex !== -1 && selectedJobIndex !== index }"
                                 >
                                     {{job}}
                                 </li>
@@ -138,10 +139,12 @@
                                 class="page-buttons btn-search btn btn-primary"
                                 v-for="pageNumber in totalPages"
                                 :key="pageNumber"
+                                @click="setPage(pageNumber)"
                             >
                                 {{ pageNumber }}
                             </button>
                         </div>
+                        <!-- Pagination -->
                     </div>
                 </div>
                 <!-- Main section -->
