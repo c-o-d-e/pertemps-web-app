@@ -32,7 +32,7 @@
     font-size: 0.8rem;
 }
 
-/* custom width for pagination */
+/* Custom width for pagination */
 .page-buttons {
     border-radius: 50%;
     width: 40px;
@@ -41,7 +41,7 @@
     border: none;
 }
 
-/* custom width for job count circle */
+/* Custom width for job count circle */
 .categories-jobs-number {
     border-radius: 50%;
     width: 20px;
@@ -60,16 +60,26 @@
     color: #fff;
 }
 
-/* keep job details evenly spaced from its icons */
+/* Keep job details evenly spaced from its icons */
 .width-jobs-icons {
     width: 30px;
 }
 
-/* custom sizes for aesthetics */
+/* Custom sizes for aesthetics */
 .normal-size {
     font-size: 1.2rem;
 }
 
 .large-size {
     font-size: 2rem;
+}
+
+/* Back icon style */
+.back-button {
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background-color: #fff;
+    color: #1e81b0;
 }
