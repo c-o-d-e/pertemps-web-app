@@ -16,7 +16,7 @@ const app = Vue.createApp({
         };
     },
     created() {
-        // get data from json file
+        // Get data from json file
         fetch("/data/jobs.json")
             .then(response => response.json())
             .then(data => {
@@ -35,16 +35,16 @@ const app = Vue.createApp({
     },
 
     computed: {
-        // reduce the height of the image on job details page
+        // Reduce the height of the image on job details page
         jobDetailsImgHeight() {
             return `${this.imgHeight}vh`;
         },
 
-        // filter and sort jobs
+        // Filter and sort jobs
         sortedJobs() {
             let jobs = this.jobsData.slice();
 
-            // filter by search query
+            // Filter by search query
             if (this.searchQuery !== "") {
                 const query = this.searchQuery.toLowerCase();
                 jobs = jobs.filter(job =>
@@ -52,14 +52,14 @@ const app = Vue.createApp({
                 );
             }
 
-            // filter by categories
+            // Filter by categories
             if (this.categories.length > 0) {
                 jobs = jobs.filter(job =>
                     this.selectedCategories.includes(job.category)
                 );
             }
 
-            // sort by highest salary_to and latest date posted
+            // Sort by highest salary_to and latest date posted
             if (this.selectedSortOption === "salary_to") {
                 return jobs.sort((a, b) => b.salary_to - a.salary_to);
             } else if (this.selectedSortOption === "posted_date") {
@@ -69,18 +69,18 @@ const app = Vue.createApp({
             }
         },
         paginatedJobs() {
-            // show max 10 jobs per page
+            // Show max 10 jobs per page
             const startIndex = (this.currentPage - 1) * this.itemsPerPage;
             const endIndex = startIndex + this.itemsPerPage;
             return this.sortedJobs.slice(startIndex, endIndex);
         },
 
-        // calculates total pages based on the length of sortedJobs and number of items per page
+        // Calculates total pages based on the length of sortedJobs and number of items per page
         totalPages() {
             return Math.ceil(this.sortedJobs.length / this.itemsPerPage);
         },
 
-        // array of pages to be displayed at the bottom of the page
+        // Array of pages to be displayed at the bottom of the page
         pageRange() {
             const range = [];
             for (let i = 1; i <= this.totalPages; i++) {
@@ -89,11 +89,11 @@ const app = Vue.createApp({
             return range;
         },
 
-        // job count per category
+        // Job count per category
         jobsPerCategory() {
             const jobCount = {};
 
-            // loop through each job and increment the count for its category
+            // Loop through each job and increment the count for its category
             this.jobsData.forEach(job => {
                 if (jobCount[job.category]) {
                     jobCount[job.category]++;
@@ -102,7 +102,7 @@ const app = Vue.createApp({
                 }
             });
 
-            // return the job count object
+            // Return the job count object
             return jobCount;
         },
     },
@@ -114,9 +114,13 @@ const app = Vue.createApp({
         increaseImgHeight() {
             this.imgHeight += 10;
         },
+
+        // Assign pagenumbers to currentpage
         setPage(pageNumber) {
             this.currentPage = pageNumber;
         },
+
+        // Logic for showing 0 pages when there are no results
         updatePage() {
             if (this.sortedJobs.length === 0) {
                 this.currentPage = 0;
@@ -125,7 +129,7 @@ const app = Vue.createApp({
             }
         },
 
-        // resets to default state
+        // Resets to default state
         reset() {
             this.selectedCategories = this.categories.slice();
             this.searchQuery = "";
@@ -133,7 +137,7 @@ const app = Vue.createApp({
             this.currentPage = 1;
         },
 
-        // find index from the job listing (original array)
+        // Find index from the job listing (original array)
         getIndexInJobsData(indexInPaginatedJobs) {
             const jobInPaginatedJobs = this.paginatedJobs[indexInPaginatedJobs];
 
@@ -152,7 +156,7 @@ const app = Vue.createApp({
             return indexInJobsData;
         },
 
-        // calculate n number of days ago the job listing was posted
+        // Calculate n number of days ago the job listing was posted
         numDaysAgo(postedDate) {
             const oneDay = 24 * 60 * 60 * 1000; // milliseconds in a day
             const postedTimestamp = Date.parse(postedDate); // timestamp of posted date
