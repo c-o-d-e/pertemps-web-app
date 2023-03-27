@@ -95,7 +95,47 @@
     font-weight: 500;
 }
 
-/* filter section - left column */
+/* Filter section - left column */
 .filter-section {
     height: fit-content;
+}
+
+/* Mobile responsiveness (Bootstrap limitation) */
+@media screen and (max-width: 570px) {
+    .main {
+        top: 100px;
+    }
+    #job-search-text {
+        position: absolute;
+        top: 30px;
+    }
+    #search,
+    #search-button {
+        height: 30px;
+    }
+
+    .search-div {
+        padding: 5px;
+    }
+
+    /* Overiding bootstrap settings */
+    #search-button {
+        padding-right: 15px !important;
+        padding-left: 15px !important;
+    }
+
+    .number-jobs {
+        height: 30px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .category-toggle-btn {
+        height: 30px;
+    }
+
+    .sorting {
+        color: #fff;
+    }
 }
