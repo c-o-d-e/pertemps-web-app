@@ -118,7 +118,11 @@ const app = Vue.createApp({
             this.currentPage = pageNumber;
         },
         updatePage() {
-            this.currentPage = 1;
+            if (this.sortedJobs.length === 0) {
+                this.currentPage = 0;
+            } else {
+                this.currentPage = 1;
+            }
         },
 
         // resets to default state
