@@ -137,6 +137,12 @@
                                     v-for="(job, index) in paginatedJobs"
                                     :class="{'d-none': selectedJobIndex !== -1 && selectedJobIndex !== index }"
                                 >
+                                    <i
+                                        class="fa fa-circle-arrow-left large-size mb-3 back-button"
+                                        v-if="goBackButton"
+                                        @click="selectedJobIndex = -1; goBackButton = false; jobSearchPage = true; increaseImgHeight()"
+                                    ></i>
+
                                     <h2>{{job.job_title}}</h2>
                                     <h4 class="job-id normal-size">
                                         <i
