@@ -94,3 +94,8 @@
 .bold-m {
     font-weight: 500;
 }
+
+/* filter section - left column */
+.filter-section {
+    height: fit-content;
+}
