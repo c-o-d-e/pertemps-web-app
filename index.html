@@ -126,10 +126,49 @@
                             <ul class="list-unstyled">
                                 <li
                                     class="shadow bg-white p-3 rounded-3 mb-3"
-                                    v-for="job in paginatedJobs"
+                                    v-for="(job, index) in paginatedJobs"
                                     :class="{'d-none': selectedJobIndex !== -1 && selectedJobIndex !== index }"
                                 >
-                                    {{job}}
+                                    <h2>{{job.job_title}}</h2>
+                                    <h4 class="job-id normal-size">
+                                        <i
+                                            class="fa fa-circle-info primary-hl-color width-jobs-icons"
+                                        ></i>
+                                        {{(getIndexInJobsData(index)+1)*133}}
+                                    </h4>
+                                    <h4 class="location normal-size">
+                                        <i
+                                            class="fa fa-location-dot primary-hl-color width-jobs-icons"
+                                        ></i>
+                                        {{job.location}}
+                                    </h4>
+                                    <h4 class="pound normal-size">
+                                        <i
+                                            class="fa fa-sterling-sign primary-hl-color width-jobs-icons"
+                                        ></i>
+                                        {{job.salary_from}} - {{job.salary_to}}
+                                    </h4>
+                                    <h4 class="clock normal-size">
+                                        <i
+                                            class="fa fa-clock primary-hl-color width-jobs-icons"
+                                        ></i>
+                                        Posted {{numDaysAgo(job.posted_date)}}
+                                        days ago
+                                    </h4>
+                                    <div
+                                        class="category-card rounded-4 border d-inline-block mt-2 mb-3 p-1 ps-3 pe-3 primary-hl-color"
+                                    >
+                                        <i class="fa fa-list"></i>
+                                        {{job.category}}
+                                    </div>
+                                    <div>
+                                        <button
+                                            class="btn secondary-button-color w-100 rounded-4 view-button"
+                                            @click="selectedJobIndex = index; goBackButton = true;  decreaseImgHeight()"
+                                        >
+                                            View
+                                        </button>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
