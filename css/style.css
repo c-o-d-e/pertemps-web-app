@@ -59,3 +59,17 @@
     background-color: #063970;
     color: #fff;
 }
+
+/* keep job details evenly spaced from its icons */
+.width-jobs-icons {
+    width: 30px;
+}
+
+/* custom sizes for aesthetics */
+.normal-size {
+    font-size: 1.2rem;
+}
+
+.large-size {
+    font-size: 2rem;
+}
