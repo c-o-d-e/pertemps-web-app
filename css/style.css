@@ -78,6 +78,7 @@
 /* Back icon style */
 .back-button {
     cursor: pointer;
+    color: lightblue;
 }
 
 .back-button:hover {
