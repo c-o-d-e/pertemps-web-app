@@ -20,6 +20,7 @@
         <div id="app">
             <!-- Background image -->
             <div
+                id="hero-image"
                 class="bg-image hero-img text-white d-flex justify-content-center align-items-center large-size"
                 :style="{ backgroundImage: 'url(images/2.jpg)', height: 'auto', width: '100%', borderBottomRightRadius: '50% 10%', borderBottomLeftRadius: '50% 10%', minHeight: jobDetailsImgHeight, backgroundColor: 'rgba(0,0,0,0.6)', backgroundSize: '100% auto' }"
             >
@@ -35,7 +36,7 @@
                     "
                 ></div>
 
-                <h1 style="z-index: 5">
+                <h1 id="job-search-text" style="z-index: 5">
                     Job&nbsp;<span v-if="jobSearchPage">Search</span
                     ><span v-if="goBackButton">Details</span>
                 </h1>
