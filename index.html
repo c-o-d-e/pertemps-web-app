@@ -27,7 +27,10 @@
             <!-- Main container -->
             <div class="container main">
                 <!-- Search bar -->
-                <div class="shadow bg-white p-3 rounded-3 search-div">
+                <div
+                    class="shadow bg-white p-3 rounded-3 search-div"
+                    v-if="jobSearchPage"
+                >
                     <label class="d-flex ps-1 pb-1" for="search">Search</label>
                     <div class="input-button d-flex justify-content-start">
                         <input
@@ -53,6 +56,7 @@
                     <!-- Total jobs -->
                     <div
                         class="filter-section shadow bg-white p-3 rounded-3 col-lg-3"
+                        v-if="jobSearchPage"
                     >
                         <div class="number-jobs text-center">
                             <h5>
@@ -98,7 +102,10 @@
                     <!-- Total jobs -->
 
                     <div class="jobs-section m-2 col-lg-9">
-                        <div class="header d-flex justify-content-between mb-3">
+                        <div
+                            class="header d-flex justify-content-between mb-3"
+                            v-if="jobSearchPage"
+                        >
                             <!-- Current Page -->
                             <div class="current-page">
                                 <div class="pagination">
@@ -124,6 +131,7 @@
                         <!-- Job listings -->
                         <div class="jobs-content">
                             <ul class="list-unstyled">
+                                <!-- Individual job listing -->
                                 <li
                                     class="shadow bg-white p-3 rounded-3 mb-3"
                                     v-for="(job, index) in paginatedJobs"
@@ -164,18 +172,135 @@
                                     <div>
                                         <button
                                             class="btn secondary-button-color w-100 rounded-4 view-button"
-                                            @click="selectedJobIndex = index; goBackButton = true;  decreaseImgHeight()"
+                                            v-if="jobSearchPage"
+                                            @click="selectedJobIndex = index; goBackButton = true; jobSearchPage = false; decreaseImgHeight()"
                                         >
                                             View
                                         </button>
                                     </div>
                                 </li>
+                                <!-- Individual job listing -->
                             </ul>
                         </div>
                         <!-- Job listings -->
 
+                        <!-- Mock Job Details -->
+                        <div
+                            class="job-details shadow bg-white p-3 rounded-3 mb-3"
+                            v-if="goBackButton"
+                        >
+                            <h2>Job Details</h2>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipisicing elit. Corporis eaque exercitationem,
+                                minima officiis et ipsam maxime sit. Assumenda
+                                molestiae quos harum, mollitia dolorum nostrum
+                                sunt eveniet alias qui neque et incidunt quas
+                                vel laboriosam inventore cumque ipsa repudiandae
+                                hic aliquid ducimus, corrupti dolor
+                                reprehenderit quis! Ad tempore nihil quo
+                                pariatur?
+                            </p>
+                            <h6 class="font-weight-bold">
+                                Key Responsibilities
+                            </h6>
+                            <ul>
+                                <li>
+                                    Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Cumque, aliquam?
+                                </li>
+                                <li>
+                                    Lorem ipsum, dolor sit amet consectetur
+                                    adipisicing elit. Voluptate sint nemo
+                                    perspiciatis rem rerum maxime?
+                                </li>
+                                <li>
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipisicing elit. Nam iusto quibusdam quia.
+                                </li>
+                                <li>
+                                    Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Cumque, aliquam?
+                                </li>
+                                <li>
+                                    Lorem ipsum, dolor sit amet consectetur
+                                    adipisicing elit. Voluptate sint nemo
+                                    perspiciatis rem rerum maxime?
+                                </li>
+                                <li>
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipisicing elit. Nam iusto quibusdam quia.
+                                </li>
+                                <li>
+                                    Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Cumque, aliquam?
+                                </li>
+                                <li>
+                                    Lorem ipsum, dolor sit amet consectetur
+                                    adipisicing elit. Voluptate sint nemo
+                                    perspiciatis rem rerum maxime?
+                                </li>
+                                <li>
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipisicing elit. Nam iusto quibusdam quia.
+                                </li>
+                            </ul>
+                            <h6 class="font-weight-bold">Requirements</h6>
+                            <ul>
+                                <li>
+                                    Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Cumque, aliquam?
+                                </li>
+                                <li>
+                                    Lorem ipsum, dolor sit amet consectetur
+                                    adipisicing elit. Voluptate sint nemo
+                                    perspiciatis rem rerum maxime?
+                                </li>
+                                <li>
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipisicing elit. Nam iusto quibusdam quia.
+                                </li>
+                                <li>
+                                    Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Cumque, aliquam?
+                                </li>
+                                <li>
+                                    Lorem ipsum, dolor sit amet consectetur
+                                    adipisicing elit. Voluptate sint nemo
+                                    perspiciatis rem rerum maxime?
+                                </li>
+                                <li>
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipisicing elit. Nam iusto quibusdam quia.
+                                </li>
+                                <li>
+                                    Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Cumque, aliquam?
+                                </li>
+                                <li>
+                                    Lorem ipsum, dolor sit amet consectetur
+                                    adipisicing elit. Voluptate sint nemo
+                                    perspiciatis rem rerum maxime?
+                                </li>
+                                <li>
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipisicing elit. Nam iusto quibusdam quia.
+                                </li>
+                            </ul>
+                            <button
+                                class="btn btn-primary btn-search text-white btn-sm rounded-4 pe-4 ps-4 col-lg-2 w-100"
+                            >
+                                Apply
+                            </button>
+                        </div>
+
+                        <!-- Mock Job Details -->
+
                         <!-- Pagination -->
-                        <div class="d-flex justify-content-center">
+                        <div
+                            class="d-flex justify-content-center"
+                            v-if="jobSearchPage"
+                        >
                             <button
                                 class="page-buttons btn-search btn btn-primary"
                                 v-for="pageNumber in totalPages"
