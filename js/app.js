@@ -166,6 +166,23 @@ const app = Vue.createApp({
             );
             return daysAgo;
         },
+
+        // dynamically make changes on screen size threshold
+        handleScreenSizeChange() {
+            if (window.innerWidth <= 768) {
+                this.showAllCategories = false;
+            } else {
+                this.showAllCategories = true;
+            }
+        },
+    },
+
+    // mount and remove the eventlistener
+    mounted() {
+        window.addEventListener("resize", this.handleScreenSizeChange);
+    },
+    beforeDestroy() {
+        window.removeEventListener("resize", this.handleScreenSizeChange);
     },
 });
 
