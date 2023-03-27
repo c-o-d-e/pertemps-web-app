@@ -49,3 +49,13 @@
     background-color: #eeeee4;
     text-align: center;
 }
+
+.view-button:hover {
+    background-color: #1e81b0;
+    color: #fff;
+}
+
+.secondary-button-color {
+    background-color: #063970;
+    color: #fff;
+}
