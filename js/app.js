@@ -10,6 +10,8 @@ const app = Vue.createApp({
             itemsPerPage: 10,
             searchQuery: "",
             selectedJobIndex: -1,
+            goBackButton: false,
+            jobSearchPage: true,
         };
     },
     created() {
