@@ -34,7 +34,7 @@
                     class="shadow bg-white p-3 rounded-3 search-div"
                     v-if="jobSearchPage"
                 >
-                    <label class="d-flex ps-1 pb-1 bold-m" for="search"
+                    <label class="d-flex ps-1 pb-1 bold" for="search"
                         >Search</label
                     >
                     <div class="input-button d-flex justify-content-start">
@@ -128,8 +128,14 @@
                             <div class="current-page">
                                 <div class="pagination">
                                     <span>
-                                        Page {{currentPage}} of
-                                        {{totalPages}}</span
+                                        Page
+                                        <span class="bold"
+                                            >{{currentPage}}</span
+                                        >
+                                        of
+                                        <span class="bold"
+                                            >{{totalPages}}</span
+                                        ></span
                                     >
                                 </div>
                             </div>
@@ -333,6 +339,7 @@
                                 class="page-buttons btn-search btn btn-primary"
                                 v-for="pageNumber in totalPages"
                                 :key="pageNumber"
+                                :class="{ 'active': currentPage === pageNumber }"
                                 @click="setPage(pageNumber)"
                             >
                                 {{ pageNumber }}
