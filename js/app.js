@@ -9,6 +9,7 @@ const app = Vue.createApp({
             currentPage: 1,
             itemsPerPage: 10,
             searchQuery: "",
+            selectedJobIndex: -1,
         };
     },
     created() {
@@ -116,11 +117,43 @@ const app = Vue.createApp({
         updatePage() {
             this.currentPage = 1;
         },
+
+        // resets to default state
         reset() {
             this.selectedCategories = this.categories.slice();
             this.searchQuery = "";
             this.selectedSortOption = "salary_to";
             this.currentPage = 1;
+        },
+
+        // find index from the job listing (original array)
+        getIndexInJobsData(indexInPaginatedJobs) {
+            const jobInPaginatedJobs = this.paginatedJobs[indexInPaginatedJobs];
+
+            // Find the index of the same job in the full jobsData array
+            const indexInJobsData = this.jobsData.findIndex(job => {
+                return (
+                    job.job_title === jobInPaginatedJobs.job_title &&
+                    job.location === jobInPaginatedJobs.location &&
+                    job.salary_from === jobInPaginatedJobs.salary_from &&
+                    job.salary_to === jobInPaginatedJobs.salary_to &&
+                    job.posted_date === jobInPaginatedJobs.posted_date &&
+                    job.category === jobInPaginatedJobs.category
+                );
+            });
+
+            return indexInJobsData;
+        },
+
+        // calculate n number of days ago the job listing was posted
+        numDaysAgo(postedDate) {
+            const oneDay = 24 * 60 * 60 * 1000; // milliseconds in a day
+            const postedTimestamp = Date.parse(postedDate); // timestamp of posted date
+            const currentTimestamp = Date.now(); // current timestamp
+            const daysAgo = Math.round(
+                Math.abs(currentTimestamp - postedTimestamp) / oneDay
+            );
+            return daysAgo;
         },
     },
 });
