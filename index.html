@@ -58,7 +58,7 @@
                 <div class="main-section d-flex justify-content-center mt-3">
                     <!-- Total jobs -->
                     <div
-                        class="filter-section shadow bg-white p-3 rounded-3 col-lg-3"
+                        class="filter-section shadow bg-white pt-2 rounded-3 col-lg-3"
                         v-if="jobSearchPage"
                     >
                         <div class="number-jobs text-center">
@@ -76,8 +76,21 @@
                                 <i class="fa fa-rotate"></i> Reset Search
                             </button>
                         </div>
+
+                        <!-- Category button -->
+                        <button
+                            class="category-toggle-btn w-100 border-0 d-flex justify-content-between p-3 mt-2 primary-hl-color border-top border-bottom align-items-center bold-m"
+                            @click="showAllCategories = !showAllCategories"
+                        >
+                            Category <i class="fa fa-angle-down"></i>
+                        </button>
+                        <!-- Category button -->
+
                         <!-- Categories -->
-                        <div class="row categories">
+                        <div
+                            class="row categories m-3"
+                            v-show="showAllCategories"
+                        >
                             <div class="col">
                                 <label
                                     v-for="category in categories"
@@ -91,7 +104,7 @@
                                         @change="updatePage"
                                     />
                                     <span
-                                        class="form-check-label d-flex justify-content-between"
+                                        class="form-check-label d-flex justify-content-between align-items-center"
                                         >{{category}}
                                         <div class="categories-jobs-number">
                                             {{jobsPerCategory[category]}}
@@ -133,6 +146,11 @@
                         </div>
                         <!-- Job listings -->
                         <div class="jobs-content">
+                            <div v-if="goBackButton" class="mb-3 sorting">
+                                <span class="bold"
+                                    >Job Search&nbsp;&nbsp;>&nbsp;&nbsp;</span
+                                >Job Details
+                            </div>
                             <ul class="list-unstyled">
                                 <!-- Individual job listing -->
                                 <li
@@ -302,7 +320,6 @@
                                 Apply
                             </button>
                         </div>
-
                         <!-- Mock Job Details -->
 
                         <!-- Pagination -->
