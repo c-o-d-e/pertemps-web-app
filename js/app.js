@@ -12,6 +12,7 @@ const app = Vue.createApp({
             selectedJobIndex: -1,
             goBackButton: false,
             jobSearchPage: true,
+            showAllCategories: true,
         };
     },
     created() {
