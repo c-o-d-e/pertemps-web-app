@@ -34,13 +34,15 @@
                     class="shadow bg-white p-3 rounded-3 search-div"
                     v-if="jobSearchPage"
                 >
-                    <label class="d-flex ps-1 pb-1" for="search">Search</label>
+                    <label class="d-flex ps-1 pb-1 bold-m" for="search"
+                        >Search</label
+                    >
                     <div class="input-button d-flex justify-content-start">
                         <input
                             class="me-2 rounded-4 ps-3 col-9 col-lg-10 col-sm-9"
                             id="search"
                             type="text"
-                            placeholder="job title"
+                            placeholder="Job Title"
                             v-model="searchQuery"
                             @input="updatePage"
                         />
@@ -125,7 +127,7 @@
                             <!-- Current Page -->
                             <div class="current-page">
                                 <div class="pagination">
-                                    <span v-model="updatePage">
+                                    <span>
                                         Page {{currentPage}} of
                                         {{totalPages}}</span
                                     >
