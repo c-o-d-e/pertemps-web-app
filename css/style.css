@@ -40,3 +40,12 @@
     margin-right: 10px;
     border: none;
 }
+
+/* custom width for job count circle */
+.categories-jobs-number {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #eeeee4;
+    text-align: center;
+}
