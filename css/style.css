@@ -48,6 +48,7 @@
     height: 20px;
     background-color: #eeeee4;
     text-align: center;
+    font-size: 0.9rem;
 }
 
 .view-button:hover {
@@ -82,4 +83,13 @@
 .back-button:hover {
     background-color: #fff;
     color: #1e81b0;
+}
+
+/* font-weight bold */
+.bold {
+    font-weight: 700;
+}
+
+.bold-m {
+    font-weight: 500;
 }
